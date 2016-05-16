@@ -1,0 +1,94 @@
+.info, .success, .warning, .error, .validation 
+{
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+}
+
+.info 
+{
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+
+.success 
+{
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+.warning 
+{
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+
+.error 
+{
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.titre 
+{
+    font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.texte 
+{
+   font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.pair {
+    background-color : #FFFFCC;
+}
+
+.impair {
+    background-color : #0099FF;
+}
+
+.horaire {
+    width: 25%;
+    text-align :center;
+    font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.equipe {
+    width: 30%;
+    text-align :center;
+    font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.score {
+    width: 5%;
+    text-align :center;
+}
+
+.separation {
+    width: 5%;
+    text-align :center;
+}
+
+table {
+    width: 100%;
+}
+
+.score input {
+    max-width : 25px;
+    text-align : center;
+}
+
+.menu1 {
+    height : 50px;
+}
+
+.menu {
+    margin-top: 19% !important;
+    height : 50px;
+}
+
+.border {
+    background-color : green;
+}

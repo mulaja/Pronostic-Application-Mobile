@@ -1,0 +1,24 @@
+
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+            <div class="panel panel-default" ng-repeat="fixture in calendarCtrl.fixtures | orderBy: date">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{fixture.date | date :'EEEE dd MMMM yyyy'}}</h3>
+                </div>
+                <div class="panel-body">
+                    <table>
+                        <tr ng-repeat="match in fixture.data">
+                            <td class="horaire">{{match.date.substring(match.date.indexOf('T') +1,match.date.length-1)}}</td>
+                            <td class="equipe">{{match.homeTeamName}}</td>
+                            <td class="score">{{match.result.goalsHomeTeam}}</td>
+                            <td class="separation">-</td>
+                            <td class="score">{{match.result.goalsAwayTeam}}</td>
+                            <td class="equipe">{{match.awayTeamName}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="scrollable">
+    <div class="scrollable-content section">
+        <table>
+            <tr ng-repeat="rang in rangCtrl.rangs" ng-class-odd="'impair'" ng-class-even="'pair'" ng-class="rangCtrl.isMySelf(rang.id) ? 'border' : ''">
+                <td align="center">{{rang.rang}}</td>
+                <td align="center">{{rang.pseudonyme}}</td>
+                <td align="center">{{rang.points}}</td>
+                <td align="center">{{rang.winners}}</td>
+                <td align="center">{{rang.scores}}</td>
+            </tr>
+        </table>
+
+    </div>
+</div>

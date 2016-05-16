@@ -1,0 +1,39 @@
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section">
+            <div ng-class="pronosticCtrl.class" ng-show="pronosticCtrl.message" ng-bind="pronosticCtrl.message"></div> 
+            <div class="panel panel-default" ng-repeat="pronostic in pronosticCtrl.pronostics | orderBy: date">
+                <div class="panel-heading">
+                    <div class="btn-group pull-right">
+                        <a ui-turn-on='myDropdown{{$index}}' class='btn'>
+                            <i class="fa fa-ellipsis-v"></i>
+                        </a>
+                        <ul ui-state="myDropdown{{$index}}"
+                            class="dropdown-menu"
+                            ui-outer-click="Ui.turnOff('myDropdown' + $index)"
+                            ui-outer-click-if="Ui.active('myDropdown' + $index)"
+                            role="menu"
+                            ui-show="myDropdown{{$index}}"
+                            ui-turn-off="myDropdown{{$index}}">
+
+                            <li><a ng-click="pronosticCtrl.savePrognosis(pronostic.data)">Enregistrer</a></li>
+                        </ul>
+                    </div>
+                    <h3 class="panel-title">{{pronostic.date | date :'EEEE dd MMMM yyyy'}}</h3>
+                </div>
+                <div class="panel-body">
+                    <table>
+                        <tr ng-repeat="match in pronostic.data">
+                            <td class="horaire">{{match.date.substring(match.date.indexOf('T') +1,match.date.length-1)}}</td>
+                            <td class="equipe">{{match.homeTeamName}}</td>
+                            <td class="score"><input type="text" ng-model="match.goalsHomeTeam" maxlength="2" ng-disabled="match.available == 'N' ? true : false" /></td>
+                            <td class="separation">-</td>
+                            <td class="score"><input type="text" ng-model="match.goalsAwayTeam" maxlength="2" ng-disabled="match.available == 'N' ? true : false" /></td>
+                            <td class="equipe">{{match.awayTeamName}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
