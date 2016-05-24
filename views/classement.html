@@ -3,6 +3,7 @@
         <table>
             <tr ng-repeat="rang in rangCtrl.rangs" ng-class-odd="'impair'" ng-class-even="'pair'" ng-class="rangCtrl.isMySelf(rang.id) ? 'border' : ''">
                 <td align="center">{{rang.rang}}</td>
+                <td align="center"><img class="avatar" ng-src="{{rang.path}}" height="32" width="32"></td>
                 <td align="center">{{rang.pseudonyme}}</td>
                 <td align="center">{{rang.points}}</td>
                 <td align="center">{{rang.winners}}</td>

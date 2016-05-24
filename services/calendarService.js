@@ -5,29 +5,26 @@ angular.module('module')
     this.$get = function ($http, $rootScope) {
         $rootScope.header = true;
         return {
-            urlSoccerseasonsEuropeanChampionships: 'http://api.football-data.org/v1/soccerseasons/424',
-            headers: { headers: { 'X-Auth-Token': 'c704e31943a3421f99e72eb5b6c4fdc6' }, method: 'GET' },
+            urlListFixtures: serverRest+'/Match',
+            
             getListFixtures: function () {
 
-                var headers = this.headers;
-                headers.url = this.urlSoccerseasonsEuropeanChampionships + '/fixtures';
-
-                return $http(this.headers).then(function (response) {
+                return $http({ method: 'GET', url: this.urlListFixtures}).then(function (response) {
 
                     var listFixtures = [];
                     var listDates = [];
 
                     // Listes des matchs
-                    for (var i = 0; i < response.data.fixtures.length; i++) {
-                        var date = response.data.fixtures[i].date.substring(0, response.data.fixtures[i].date.indexOf('T'));
+                    for (var i = 0; i < response.data.length; i++) {
+                        var date = response.data[i].date.substring(0, response.data[i].date.indexOf('T'));
                         if (!listFixtures[date]) {
                             listFixtures[date] = [];
                         }
 
-                        listFixtures[date].push(response.data.fixtures[i]);
+                        listFixtures[date].push(response.data[i]);
                     }
 
-                    // Création de l'objet complexe
+                    // Crï¿½ation de l'objet complexe
                     for (var fixture in listFixtures) {
                         listDates.push({ date: new Date(fixture).getTime(), data: listFixtures[fixture] });
                     }

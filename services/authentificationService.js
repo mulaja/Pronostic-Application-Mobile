@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('module')
-.service('authentificationService', function () {
+.service('authentificationService', function ($http) {
     return {
-        user: null,
+        urlLogin : serverRest+'/Login',
         getUser: function () {
             this.user = angular.fromJson(localStorage.authentificationService);
             return this.user;
@@ -17,7 +17,7 @@ angular.module('module')
             return !!this.user;
         },
 		submitLogin : function(utilisateur) {
-			return $http({ method: 'POST', url: 'http://mulaja.esy.es/rest.php/Login', params: utilisateur })
+			return $http({ method: 'POST', url: this.urlLogin, params: utilisateur })
                 .then(function (response) {
 					return response.data;
                 })

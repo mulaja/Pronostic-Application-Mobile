@@ -10,11 +10,21 @@
                     <table>
                         <tr ng-repeat="match in fixture.data">
                             <td class="horaire">{{match.date.substring(match.date.indexOf('T') +1,match.date.length-1)}}</td>
-                            <td class="equipe">{{match.homeTeamName}}</td>
-                            <td class="score">{{match.result.goalsHomeTeam}}</td>
-                            <td class="separation">-</td>
+                            <td class="drapeau">
+                                    <img ng-src="{{match.homeTeamHref}}" height="20" width="20">
+                            </td> 
+                            <td class="equipe">
+                                {{match.homeTeamName}}
+                            </td>
+                            <td class="score"> {{match.result.goalsHomeTeam}}</td>
+                            <td class="separation"> - </td>
                             <td class="score">{{match.result.goalsAwayTeam}}</td>
-                            <td class="equipe">{{match.awayTeamName}}</td>
+                            <td class="equipe">
+                                {{match.awayTeamName}}
+                                </td>
+                            <td class="drapeau">
+                                <img ng-src="{{match.awayTeamHref}}" height="20" width="20">
+                            </td>
                         </tr>
                     </table>
                 </div>

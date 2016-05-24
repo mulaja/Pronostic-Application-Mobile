@@ -49,13 +49,13 @@
 }
 
 .horaire {
-    width: 25%;
+    width: 20%;
     text-align :center;
     font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .equipe {
-    width: 30%;
+    width: 26%;
     text-align :center;
     font-family : 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
@@ -67,6 +67,11 @@
 }
 
 .separation {
+    width: 5%;
+    text-align :center;
+}
+
+.drapeau {
     width: 5%;
     text-align :center;
 }
@@ -91,4 +96,16 @@ table {
 
 .border {
     background-color : green;
+}
+
+.panel-heading {
+    background-color: #00529B !important;
+}
+
+.avatar {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 16px;
+    border-radius: 50%;
+    box-sizing: content-box;
 }

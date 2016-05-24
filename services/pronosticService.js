@@ -4,9 +4,9 @@ angular.module('module')
 .provider('pronosticService', function () {
     this.$get = function ($http) {
         return {
-            urlListPronostics: 'http://mulaja.esy.es/rest.php/Prognosis',
+            urlListPronostics: serverRest+'/Prognosis',
             getListPronostics: function (idUser) {
-                return $http({ method: 'GET', url: this.urlListPronostics, params: { id_user: idUser } }).then(function (response) {
+                 return $http({ method: 'GET', url: this.urlListPronostics, params: { id_user: idUser } }).then(function (response) {
 
                     var listPronostics = [];
                     var listDates = [];
@@ -22,7 +22,7 @@ angular.module('module')
                         listPronostics[date].push(response.data[i]);
                     }
 
-                    // Création de l'objet complexe
+                    // Crï¿½ation de l'objet complexe
                     for (var pronostic in listPronostics) {
                         listDates.push({ date: new Date(pronostic).getTime(), data: listPronostics[pronostic] });
                     }
@@ -33,6 +33,8 @@ angular.module('module')
             savePrognosis: function (pronostics) {
                 return $http.post(this.urlListPronostics, pronostics).then(function (response) {
                     return response.data;
+                }).catch(function(error){
+                    return error.message;
                 });
 
             }
