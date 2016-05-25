@@ -5,6 +5,10 @@ angular.module('module')
 
     var homeCtrl = this;
 
+    homeCtrl.isConnected = function(){
+        return authentificationService.isConnected();
+    };
+
     homeCtrl.calendrier = function () {
         $location.url('/calendar');
     };
@@ -18,13 +22,19 @@ angular.module('module')
     };
 
     homeCtrl.deconnexion = function () {
-
         authentificationService.setUser(null);
-        $location.url('/login');
     };
 
     homeCtrl.reglement = function () {
         $location.url('/reglement');
+    };
+    
+    homeCtrl.login = function () {
+        $location.url('/login');
+    };
+    
+    homeCtrl.profil = function () {
+        $location.url('/profil');
     };
 
 }]);

@@ -4,14 +4,11 @@ angular.module('module')
 .controller('pronosticController', ['$location','pronosticService', 'authentificationService', function ($location,pronosticService, authentificationService) {
 
     var pronosticCtrl = this;
+    pronosticCtrl.loading = true;
 
-    // Boolean pour determiner si l'utilisateur est connecté
+    // Boolean pour determiner si l'utilisateur est connectï¿½
     pronosticCtrl.isConnected = function () {
         return authentificationService.isConnected();
-    };
-
-    pronosticCtrl.home = function () {
-        $location.url('/home');
     };
 
     // Fonction pour sauvegerder les pronostics
@@ -52,11 +49,14 @@ angular.module('module')
 
     document.addEventListener('deviceready', function () {
 
-        // On récupère les pronostics
+        // On rï¿½cupï¿½re les pronostics
         if (pronosticCtrl.isConnected()) {
             pronosticService.getListPronostics(authentificationService.getUser().id).then(function (pronostics) {
                 pronosticCtrl.pronostics = pronostics;
+                pronosticCtrl.loading = false;
             });
+        }else{
+            $location.url('/home');
         }
 
     });

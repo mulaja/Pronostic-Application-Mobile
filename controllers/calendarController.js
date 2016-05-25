@@ -4,8 +4,9 @@ angular.module('module')
 .controller('calendarController', ['$location','calendarService', 'authentificationService', function ($location,calendarService, authentificationService) {
 
     var calendarCtrl = this;
-
-    // Boolean pour determiner si l'utilisateur est connecté
+    calendarCtrl.loading = true;
+    
+    // Boolean pour determiner si l'utilisateur est connectï¿½
     calendarCtrl.isConnected = function () {
         return authentificationService.isConnected();
     };
@@ -16,9 +17,10 @@ angular.module('module')
 
     document.addEventListener('deviceready', function () {
 
-        // On récupère la liste des matchs
+        // On rï¿½cupï¿½re la liste des matchs
         calendarService.getListFixtures().then(function (fixtures) {
             calendarCtrl.fixtures = fixtures;
+            calendarCtrl.loading = false;
         });
     });
 }]);

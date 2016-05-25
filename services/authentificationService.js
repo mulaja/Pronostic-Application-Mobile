@@ -20,10 +20,7 @@ angular.module('module')
 			return $http({ method: 'POST', url: this.urlLogin, params: utilisateur })
                 .then(function (response) {
 					return response.data;
-                })
-                .catch(function (error) {
-					return error.data.message;
-                });
+                }); 
 		}
     };
 });

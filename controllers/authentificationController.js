@@ -16,8 +16,8 @@ angular.module('module')
                     authentificationService.setUser(utilisateur);
                     $location.url('/home');
                 })
-                .catch(function (message) {
-                    authentificationCtrl.error = message;
+                .catch(function (error) {
+                    authentificationCtrl.error = error.data.message;
                 });
             }
         };
@@ -25,9 +25,5 @@ angular.module('module')
         authentificationCtrl.inscription = function () {
             $location.url('/create');
         };
-
-        if (authentificationService.isConnected()) {
-            $location.url('/home');
-        }
 
     }]);

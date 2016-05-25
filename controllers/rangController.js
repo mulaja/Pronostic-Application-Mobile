@@ -4,7 +4,8 @@ angular.module('module')
 .controller('rangController', ['$location','rangService', 'authentificationService', function ($location,rangService, authentificationService) {
 
     var rangCtrl = this;
-
+    rangCtrl.loading = true;
+    
     // Boolean pour determiner si l'utilisateur est connect�
     rangCtrl.isConnected = function () {
         return authentificationService.isConnected();
@@ -85,8 +86,12 @@ angular.module('module')
                     scores = classement[i].scores;
 
                 }
+                
+                rangCtrl.loading = false;
 
             });
+        }else{
+            $location.url('/home');
         }
     });
 

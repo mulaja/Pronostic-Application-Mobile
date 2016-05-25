@@ -1,5 +1,10 @@
 <div class="scrollable">
     <div class="scrollable-content section">
+        
+        <div style="text-align : center; margin-top : 50%" ng-if="rangCtrl.loading">
+              <img src="img/loading.gif" ng-if="rangCtrl.loading">
+        </div>
+        
         <table>
             <tr ng-repeat="rang in rangCtrl.rangs" ng-class-odd="'impair'" ng-class-even="'pair'" ng-class="rangCtrl.isMySelf(rang.id) ? 'border' : ''">
                 <td align="center">{{rang.rang}}</td>

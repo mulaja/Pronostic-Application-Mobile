@@ -2,26 +2,34 @@
     <div class="scrollable-content section">
 
         <fieldset>
-            <legend>Menu</legend>
+            <legend>
+                Menu 
+                <div ng-if="homeCtrl.isConnected()" style="text-align:right;"> 
+                    <img src="img/logout.png" ng-click="homeCtrl.deconnexion()" width="30%">
+                </div>
+                <div ng-if="!homeCtrl.isConnected()" style="text-align:right;">
+                    <img src="img/login.png" ng-click="homeCtrl.login()" width="30%">
+                </div>
+            </legend>
 
             <button class="btn btn-primary btn-block menu1" ng-click="homeCtrl.calendrier()">
                 Calendrier
             </button>
 
-            <button class="btn btn-primary btn-block menu" ng-click="homeCtrl.pronostics()">
+            <button ng-if="homeCtrl.isConnected()" class="btn btn-primary btn-block menu" ng-click="homeCtrl.pronostics()">
                 Mes pronostics
             </button>
 
-            <button class="btn btn-primary btn-block menu" ng-click="homeCtrl.classement()">
+            <button ng-if="homeCtrl.isConnected()" class="btn btn-primary btn-block menu" ng-click="homeCtrl.classement()">
                 Classement
             </button>
 
             <button class="btn btn-primary btn-block menu" ng-click="homeCtrl.reglement()">
                 Reglement
             </button>
-
-            <button class="btn btn-primary btn-block menu" ng-click="homeCtrl.deconnexion()">
-                Deconnexion
+            
+            <button class="btn btn-primary btn-block menu" ng-click="homeCtrl.profil()">
+                Profil
             </button>
 
         </fieldset>

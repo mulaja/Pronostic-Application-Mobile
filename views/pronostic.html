@@ -1,6 +1,11 @@
 <div class="scrollable">
     <div class="scrollable-content">
         <div class="section">
+            
+            <div style="text-align : center; margin-top : 50%" ng-if="pronosticCtrl.loading">
+                <img src="img/loading.gif" ng-if="pronosticCtrl.loading">
+            </div>
+            
             <div ng-class="pronosticCtrl.class" ng-show="pronosticCtrl.message" ng-bind="pronosticCtrl.message"></div> 
             <div class="panel panel-default" ng-repeat="pronostic in pronosticCtrl.pronostics | orderBy: date">
                 <div class="panel-heading">
@@ -31,9 +36,9 @@
                             <td class="equipe">
                                 {{match.homeTeamName}}
                             </td>
-                            <td class="score"><input type="text" ng-model="match.goalsHomeTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></tdclass>
+                            <td class="score"><input type="text" pattern="[0-9]*" ng-model="match.goalsHomeTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></tdclass>
                             <td class="separation">-</td>
-                            <td class="score"><input type="text" ng-model="match.goalsAwayTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></td>  
+                            <td class="score"><input type="text" pattern="[0-9]*" ng-model="match.goalsAwayTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></td>  
                             <td class="equipe">
                                 {{match.awayTeamName}}
                             </td>

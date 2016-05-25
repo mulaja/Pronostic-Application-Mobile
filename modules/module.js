@@ -39,12 +39,18 @@ angular.module('module', ['ngRoute', 'ngCordova', 'mobile-angular-ui', 'mobile-a
         controller: 'rangController',
         controllerAs: 'rangCtrl'
     });
+    
+    $routeProvider.when('/profil', {
+        templateUrl: 'views/profil.html',
+        controller: 'profilController',
+        controllerAs: 'profilCtrl'
+    });
 
     $routeProvider.when('/reglement', {
         templateUrl: 'views/reglement.html'
     });
 
     $routeProvider.otherwise({
-        redirectTo: '/login'
+        redirectTo: '/home'
     });
 });

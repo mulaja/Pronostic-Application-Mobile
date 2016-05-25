@@ -1,6 +1,11 @@
 
 <div class="scrollable">
     <div class="scrollable-content">
+        
+        <div style="text-align : center; margin-top : 50%" ng-if="calendarCtrl.loading">
+              <img src="img/loading.gif" ng-if="calendarCtrl.loading">
+        </div>
+        
         <div class="section">
             <div class="panel panel-default" ng-repeat="fixture in calendarCtrl.fixtures | orderBy: date">
                 <div class="panel-heading">
