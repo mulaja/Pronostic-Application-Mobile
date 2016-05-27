@@ -28,7 +28,7 @@
                 Reglement
             </button>
             
-            <button class="btn btn-primary btn-block menu" ng-click="homeCtrl.profil()">
+            <button ng-if="homeCtrl.isConnected()" class="btn btn-primary btn-block menu" ng-click="homeCtrl.profil()">
                 Profil
             </button>
 
