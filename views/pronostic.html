@@ -29,22 +29,24 @@
                 <div class="panel-body">
                     <table>
                         <tr ng-repeat="match in pronostic.data">
-                            <td class="horaire">{{match.date.substring(match.date.indexOf('T') +1,match.date.length-1)}}</td>
-                            <td class="drapeau">
-                                <img ng-src="{{match.homeTeamHref}}" height="20" width="20">
-                            </td>
-                            <td class="equipe">
-                                {{match.homeTeamName}}
-                            </td>
-                            <td class="score"><input type="text" pattern="[0-9]*" ng-model="match.goalsHomeTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></tdclass>
-                            <td class="separation">-</td>
-                            <td class="score"><input type="text" pattern="[0-9]*" ng-model="match.goalsAwayTeam" maxlength="2" size="2" ng-disabled="match.available == 'N' ? true : false" /></td>  
-                            <td class="equipe">
-                                {{match.awayTeamName}}
-                            </td>
-                            <td class="drapeau">
-                                <img ng-src="{{match.awayTeamHref}}" height="20" width="20">
-                            </td>
+                            <td class="horaire">{{match.time}}</td>
+                                <td class="drapeau">
+                                    <img ng-src="{{match.homeTeamHref}}" height="30" width="30">
+                                </td>
+                                <td class="equipe">
+                                    {{match.homeTeamName}}
+                                </td>
+                                <td class="score"><input type="text" ng-model="match.goalsHomeTeam" maxlength="2" style="width : 25px;" ng-disabled="match.available == 'N' ? true : false" /></td>
+                                <td class="score" ng-if="match.matchday > 3"><input id="{{match.idMatch}}-home" type="checkbox" ng-checked="match.goalsHomeTeam > match.goalsAwayTeam || pronosticCtrl.checklist[match.idMatch+'-home'] "></td>
+                                <td class="separation">-</td>
+                                <td class="score"><input type="text" ng-model="match.goalsAwayTeam" maxlength="2" style="width : 25px;" ng-disabled="match.available == 'N' ? true : false" /></td>
+                                <td class="score" ng-if="match.matchday > 3"><input id="{{match.idMatch}}-away" type="checkbox" ng-checked="match.goalsHomeTeam < match.goalsAwayTeam || pronosticCtrl.checklist[match.idMatch+'-away']"></td>  
+                                <td class="equipe">
+                                    {{match.awayTeamName}}
+                                </td>
+                                <td class="drapeau">
+                                    <img ng-src="{{match.awayTeamHref}}" height="30" width="30">
+                                </td>
                         </tr>
                     </table>
                 </div>

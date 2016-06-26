@@ -21,6 +21,10 @@ angular.module('module')
                             listFixtures[date] = [];
                         }
 
+                        var time_full = response.data[i].date.substring(response.data[i].date.indexOf('T') +1,response.data[i].date.length-1);
+                        var time = time_full.substring(0,time_full.lastIndexOf(":"));
+                        response.data[i].time = time;
+                        
                         listFixtures[date].push(response.data[i]);
                     }
 
@@ -28,6 +32,13 @@ angular.module('module')
                     for (var fixture in listFixtures) {
                         listDates.push({ date: new Date(fixture).getTime(), data: listFixtures[fixture] });
                     }
+                    
+                    listDates.sort(function(a,b){
+                            // Turn your strings into dates, and then subtract them
+                            // to get a value that is either negative, positive, or zero.
+                            return new Date(a.date) - new Date(b.date);
+                     });       
+
 
                     return listDates;
                 });

@@ -14,21 +14,30 @@
                 <div class="panel-body">
                     <table>
                         <tr ng-repeat="match in fixture.data">
-                            <td class="horaire">{{match.date.substring(match.date.indexOf('T') +1,match.date.length-1)}}</td>
-                            <td class="drapeau">
-                                    <img ng-src="{{match.homeTeamHref}}" height="20" width="20">
-                            </td> 
-                            <td class="equipe">
+                            <td class="drapeau" ng-if="match.status == 'FINISHED'">
+                                <img src="img\icons\finish.jpg" height="30" width="30">
+                            </td>
+                            <td class="encours" ng-if="match.status == 'IN_PLAY'">
+                                <img ng-if="match.status == 'IN_PLAY'" src="img\icons\progress.jpg" height="30" width="30">
+                            </td>
+                            <td class="drapeau" ng-if="match.status == 'TIMED'">
+                                <img ng-if="match.status == 'TIMED'" src="img\icons\timed.jpg" height="30" width="30">
+                            </td>
+                            <td ng-class="match.status == 'IN_PLAY' ? 'horaire encours' : 'horaire'">{{match.time}}</td>
+                            <td ng-class="match.status == 'IN_PLAY' ? 'drapeau encours' : 'drapeau'">
+                                    <img ng-src="{{match.homeTeamHref}}" height="30" width="30">
+                            </td>
+                            <td ng-class="match.status == 'IN_PLAY' ? 'equipe encours' : 'equipe'">
                                 {{match.homeTeamName}}
                             </td>
-                            <td class="score"> {{match.result.goalsHomeTeam}}</td>
+                            <td ng-class="match.status == 'IN_PLAY' ? 'score encours' : 'score'"> {{match.goalsHomeTeam}}</td>
                             <td class="separation"> - </td>
-                            <td class="score">{{match.result.goalsAwayTeam}}</td>
-                            <td class="equipe">
+                            <td ng-class="match.status == 'IN_PLAY' ? 'score encours' : 'score'">{{match.goalsAwayTeam}}</td>
+                            <td ng-class="match.status == 'IN_PLAY' ? 'equipe encours' : 'equipe'">
                                 {{match.awayTeamName}}
-                                </td>
-                            <td class="drapeau">
-                                <img ng-src="{{match.awayTeamHref}}" height="20" width="20">
+                            </td>
+                            <td ng-class="match.status == 'IN_PLAY' ? 'drapeau encours' : 'drapeau'">
+                                <img ng-src="{{match.awayTeamHref}}" height="30" width="30">
                             </td>
                         </tr>
                     </table>

@@ -19,6 +19,10 @@ angular.module('module')
                             listPronostics[date] = [];
                         }
 
+                        var time_full = response.data[i].date.substring(response.data[i].date.indexOf('T') +1,response.data[i].date.length-1);
+                        var time = time_full.substring(0,time_full.lastIndexOf(":"));
+                        response.data[i].time = time;
+
                         listPronostics[date].push(response.data[i]);
                     }
 
@@ -26,6 +30,12 @@ angular.module('module')
                     for (var pronostic in listPronostics) {
                         listDates.push({ date: new Date(pronostic).getTime(), data: listPronostics[pronostic] });
                     }
+
+                    listDates.sort(function(a,b){
+                            // Turn your strings into dates, and then subtract them
+                            // to get a value that is either negative, positive, or zero.
+                            return new Date(a.date) - new Date(b.date);
+                     });   
 
                     return listDates;
                 });
